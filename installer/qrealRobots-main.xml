@@ -91,9 +91,6 @@
                     <origin>%1/plugins/robots/examples/valkyries.qrs</origin>
                 </distributionFile>
                 <distributionFile>
-                    <origin>%1/plugins/robots/examples/helloworld.qrs</origin>
-                </distributionFile>
-                <distributionFile>
                     <origin>%1/plugins/robots/examples/helloworld_click.qrs</origin>
                 </distributionFile>
                 <distributionFile>

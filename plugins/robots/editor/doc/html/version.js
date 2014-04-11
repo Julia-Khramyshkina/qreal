@@ -1,5 +1,5 @@
-var version = "2.5.2.4 (TRIK)";
-var year = 2013;
+var version = "2.5.3.0 (TRIK)";
+var year = 2014;
 
 window.onload = function() {
 	document.title = document.title.replace("%version%", version);
