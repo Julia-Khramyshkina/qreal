@@ -90,6 +90,25 @@
                 <distributionFile>
                     <origin>%1/plugins/robots/examples/valkyries.qrs</origin>
                 </distributionFile>
+                <distributionFile>
+                    <origin>%1/plugins/robots/examples/helloworld.qrs</origin>
+                </distributionFile>
+                <distributionFile>
+                    <origin>%1/plugins/robots/examples/helloworld_click.qrs</origin>
+                </distributionFile>
+                <distributionFile>
+                    <origin>%1/plugins/robots/examples/smile_wall.qrs</origin>
+                </distributionFile>
+                <distributionFile>
+                    <origin>%1/plugins/robots/examples/sumo_trik.qrs</origin>
+                </distributionFile>
+                <distributionFile>
+                    <origin>%1/plugins/robots/examples/thewall.qrs</origin>
+                </distributionFile>
+                <distributionFile>
+                    <origin>%1/plugins/robots/examples/thewall2.xml</origin>
+                </distributionFile>
+
             </distributionFileList>
         </folder>
         <folder>

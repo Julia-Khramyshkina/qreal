@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+    <world>
+        <walls>
+            <wall begin="-815:-458" end="-549:-572"/>
+            <wall begin="-549:-572" end="-295:-461"/>
+            <wall begin="-295:-461" end="0:-565"/>
+            <wall begin="0:-565" end="311:-440"/>
+            <wall begin="-737:-280" end="-521:-389"/>
+            <wall begin="-521:-389" end="-272:-266"/>
+            <wall begin="-268:-268" end="40:-386"/>
+            <wall begin="43:-386" end="319:-281"/>
+        </walls>
+        <colorFields/>
+    </world>
+    <robot position="-784.694:-434.75" direction="12.23286434860612">
+        <sensors>
+            <sensor position="-706:-424" port="0" direction="-42.81632701462861" type="3"/>
+            <sensor position="0:0" port="1" direction="0" type="0"/>
+            <sensor position="-65:147" port="2" direction="0" type="0"/>
+            <sensor position="0:0" port="3" direction="0" type="0"/>
+        </sensors>
+    </robot>
+</root>
