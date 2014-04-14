@@ -2344,21 +2344,21 @@
 			</group>
 			<group name="Ожидания">
 				<element name="Timer"/>
-<!--				<element name="WaitForTouchSensor"/>
+				<element name="WaitForTouchSensor"/>
 				<element name="WaitForSonarDistance"/>
 				<element name="WaitForColor"/>
 				<element name="WaitForEncoder"/>
-				<element name="WaitForColorIntensity"/> -->
-<!--				<element name="WaitForLight"/> -->
-<!--				<element name="WaitForSound"/>
-				<element name="WaitForGyroscope"/> -->
+				<element name="WaitForColorIntensity"/>
+				<element name="WaitForLight"/>
+				<element name="WaitForSound"/>
+				<element name="WaitForGyroscope"/>
 				<element name="WaitForEnter"/>
 				<element name="WaitForLeft"/>
 				<element name="WaitForRight"/>
 				<element name="WaitForUp"/>
 				<element name="WaitForDown"/>
-<!-- 				<element name="WaitForPower"/>
- -->			</group>
+				<element name="WaitForPower"/>
+			</group>
 <!--			<group name="Инициализация"> -->
 <!--			</group> -->
 <!--			<group name="Сегвей">
