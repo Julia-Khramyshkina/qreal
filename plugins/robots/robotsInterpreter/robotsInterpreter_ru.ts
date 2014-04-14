@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru_RU">
+<TS version="2.1" language="ru_RU">
 <context>
     <name>D2Form</name>
     <message>
@@ -338,7 +338,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Реальный робот</translation>
     </message>
     <message>
-        <location filename="robotSettingsPage.ui" line="306"/>
+        <location filename="robotSettingsPage.ui" line="281"/>
         <source>Sensors Settings</source>
         <translation>Настройки сенсоров</translation>
     </message>
@@ -451,27 +451,27 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Реалистичные моторы</translation>
     </message>
     <message>
-        <location filename="robotSettingsPage.ui" line="313"/>
+        <location filename="robotSettingsPage.ui" line="288"/>
         <source>Uploading &amp;&amp; Running</source>
         <translation>Загрузка и запуск программ</translation>
     </message>
     <message>
-        <location filename="robotSettingsPage.ui" line="319"/>
+        <location filename="robotSettingsPage.ui" line="294"/>
         <source>Running after uploading:</source>
         <translation>Запуск после загрузки:</translation>
     </message>
     <message>
-        <location filename="robotSettingsPage.ui" line="327"/>
+        <location filename="robotSettingsPage.ui" line="302"/>
         <source>Ask</source>
         <translation>Спрашивать</translation>
     </message>
     <message>
-        <location filename="robotSettingsPage.ui" line="332"/>
+        <location filename="robotSettingsPage.ui" line="307"/>
         <source>Always run</source>
         <translation>Всегда запускать</translation>
     </message>
     <message>
-        <location filename="robotSettingsPage.ui" line="337"/>
+        <location filename="robotSettingsPage.ui" line="312"/>
         <source>Never run</source>
         <translation>Никогда не запускать</translation>
     </message>
@@ -510,9 +510,13 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="customizer.cpp" line="11"/>
         <source>QReal:Robots</source>
-        <translation>QReal:Robots</translation>
+        <translation type="vanished">QReal:Robots</translation>
+    </message>
+    <message>
+        <location filename="customizer.cpp" line="11"/>
+        <source>Trik Studio</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="customizer.cpp" line="50"/>
@@ -733,6 +737,11 @@ p, li { white-space: pre-wrap; }
         <source>Gyroscope</source>
         <translation>Гироскоп</translation>
     </message>
+    <message>
+        <location filename="sensorConstants.cpp" line="20"/>
+        <source>Volume sensor</source>
+        <translation>Сенсор объема</translation>
+    </message>
 </context>
 <context>
     <name>SensorsConfigurationWidget</name>
@@ -760,6 +769,14 @@ p, li { white-space: pre-wrap; }
         <location filename="details/sensorsConfigurationWidget.ui" line="55"/>
         <source>Port 4:</source>
         <translation>Порт 4:</translation>
+    </message>
+</context>
+<context>
+    <name>TrikDisplay</name>
+    <message>
+        <location filename="details/trikDisplay.ui" line="14"/>
+        <source>Trik Display</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -993,7 +1010,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Сервер %1 не найден. Проверьте адрес и попробуйте еще раз </translation>
     </message>
     <message>
-        <location filename="details/robotCommunication/tcpRobotCommunicationThread.cpp" line="48"/>
+        <location filename="details/robotCommunication/tcpRobotCommunicationThread.cpp" line="49"/>
         <source>Unable to resolve %1. Check server address and try again.</source>
         <translation>Сервер %1 не найден. Проверьте адрес и попробуйте еще раз.</translation>
     </message>
@@ -1249,7 +1266,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>qReal::interpreters::robots::details::blocks::WaitForButtonsBlock</name>
     <message>
-        <location filename="details/blocks/waitForButtonsBlock.cpp" line="39"/>
+        <location filename="details/blocks/waitForButtonsBlock.cpp" line="46"/>
         <source>Buttons</source>
         <translation>Кнопки</translation>
     </message>

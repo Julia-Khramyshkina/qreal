@@ -1176,7 +1176,7 @@
 					<container/>
 					<properties>
 						<property displayedName="Порт" type="string" name="Port">
-							<default>B</default>
+							<default>1</default>
 						</property>
 						<property displayedName="Предел оборотов" type="string" name="TachoLimit"/>
 						<property displayedName="Считанное значение" type="DistanceSign" name="Sign">
@@ -2346,11 +2346,11 @@
 				<element name="Timer"/>
 <!--				<element name="WaitForTouchSensor"/>
 				<element name="WaitForSonarDistance"/>
-				<element name="WaitForColor"/>
+				<element name="WaitForColor"/> -->
 				<element name="WaitForEncoder"/>
-				<element name="WaitForColorIntensity"/> -->
-<!--				<element name="WaitForLight"/> -->
-<!--				<element name="WaitForSound"/>
+<!--				<element name="WaitForColorIntensity"/>
+				<element name="WaitForLight"/>
+				<element name="WaitForSound"/>
 				<element name="WaitForGyroscope"/> -->
 				<element name="WaitForEnter"/>
 				<element name="WaitForLeft"/>

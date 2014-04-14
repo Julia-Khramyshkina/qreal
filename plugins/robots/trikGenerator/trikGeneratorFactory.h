@@ -23,6 +23,7 @@ public:
 
 	simple::Binding::MultiConverterInterface *enginesConverter(bool powerMotors) const;
 	simple::Binding::MultiConverterInterface *enginesConverter() const override;
+	simple::Binding::MultiConverterInterface *encodersConverter() const;
 
 	simple::Binding::ConverterInterface *inputPortConverter() const override;
 	simple::Binding::ConverterInterface *outputPortConverter() const override;

@@ -87,6 +87,8 @@ QString CodeConverterBase::readSensorTemplatePath(
 		return "sensors/readSound.t";
 	case qReal::interpreters::robots::enums::sensorType::gyroscope:
 		return "sensors/readGyroscope.t";
+	case qReal::interpreters::robots::enums::sensorType::volume:
+		return "sensors/readVolume.t";
 	default:
 		// TODO: display error when no sensor specified
 		return "sensors/readTouch.t";

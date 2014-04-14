@@ -40,6 +40,7 @@ HEADERS += \
 	$$PWD/converters/ledColorConverter.h \
 	$$PWD/converters/powerMotorPortConverter.h \
 	$$PWD/converters/servoMotorPortConverter.h \
+	$$PWD/converters/encoderPortConverter.h \
 	$$PWD/simpleGenerators/detectLineGenerator.h \
 	$$PWD/simpleGenerators/initCameraGenerator.h \
 	$$PWD/simpleGenerators/ledGenerator.h \
@@ -52,6 +53,7 @@ HEADERS += \
 	$$PWD/simpleGenerators/smileGenerator.h \
 	$$PWD/simpleGenerators/trikEnginesGenerator.h \
 	$$PWD/simpleGenerators/trikEnginesStopGenerator.h \
+	$$PWD/simpleGenerators/trikNullificationEncoderGenerator.h \
 	$$PWD/simpleGenerators/waitForButtonGenerator.h \
 
 SOURCES += \
@@ -64,6 +66,7 @@ SOURCES += \
 	$$PWD/converters/ledColorConverter.cpp \
 	$$PWD/converters/powerMotorPortConverter.cpp \
 	$$PWD/converters/servoMotorPortConverter.cpp \
+	$$PWD/converters/encoderPortConverter.cpp \
 	$$PWD/simpleGenerators/detectLineGenerator.cpp \
 	$$PWD/simpleGenerators/initCameraGenerator.cpp \
 	$$PWD/simpleGenerators/ledGenerator.cpp \
@@ -76,6 +79,7 @@ SOURCES += \
 	$$PWD/simpleGenerators/smileGenerator.cpp \
 	$$PWD/simpleGenerators/trikEnginesGenerator.cpp \
 	$$PWD/simpleGenerators/trikEnginesStopGenerator.cpp \
+	$$PWD/simpleGenerators/trikNullificationEncoderGenerator.cpp \
 	$$PWD/simpleGenerators/waitForButtonGenerator.cpp \
 
 include(robotCommunication/robotCommunication.pri)

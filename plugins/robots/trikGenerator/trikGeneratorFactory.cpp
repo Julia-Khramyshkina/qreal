@@ -2,6 +2,7 @@
 #include <converters/regexpMultiConverter.h>
 #include "converters/servoMotorPortConverter.h"
 #include "converters/powerMotorPortConverter.h"
+#include "converters/encoderPortConverter.h"
 #include "simpleGenerators/detectLineGenerator.h"
 #include "simpleGenerators/initCameraGenerator.h"
 #include "simpleGenerators/ledGenerator.h"
@@ -15,6 +16,7 @@
 #include "simpleGenerators/trikEnginesGenerator.h"
 #include "simpleGenerators/trikEnginesStopGenerator.h"
 #include "simpleGenerators/waitForButtonGenerator.h"
+#include "simpleGenerators/trikNullificationEncoderGenerator.h"
 #include "parts/trikVariables.h"
 
 using namespace qReal::robots::generators;
@@ -39,6 +41,8 @@ AbstractSimpleGenerator *TrikGeneratorFactory::simpleGenerator(qReal::Id const &
 		return new TrikEnginesGenerator(mRepo, customizer, id, elementType, this);
 	} else if (elementType == "EnginesStop") {
 		return new TrikEnginesStopGenerator(mRepo, customizer, id, this);
+	} else if (elementType == "NullificationEncoder") {
+		return new TrikNullificationEncoderGenerator(mRepo, customizer, id, this);
 	} else if (elementType == "PlayTone") {
 		return new PlayToneGenerator(mRepo, customizer, id, this);
 	} else if (elementType == "Smile") {
@@ -97,6 +101,12 @@ Binding::MultiConverterInterface *TrikGeneratorFactory::enginesConverter() const
 	return enginesConverter(true);
 }
 
+Binding::MultiConverterInterface *TrikGeneratorFactory::encodersConverter() const
+{
+	return new converters::RegexpMultiConverter(converters::PowerMotorPortConverter::splitRegexp()
+			, new converters::EncoderPortConverter);
+}
+
 Binding::ConverterInterface *TrikGeneratorFactory::inputPortConverter() const
 {
 	return new Binding::EmptyConverter;
@@ -104,7 +114,7 @@ Binding::ConverterInterface *TrikGeneratorFactory::inputPortConverter() const
 
 Binding::ConverterInterface *TrikGeneratorFactory::outputPortConverter() const
 {
-	return new converters::PowerMotorPortConverter;
+	return new converters::EncoderPortConverter;
 }
 
 void TrikGeneratorFactory::initVariables()
