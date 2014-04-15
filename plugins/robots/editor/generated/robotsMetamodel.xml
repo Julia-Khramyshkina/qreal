@@ -2310,7 +2310,7 @@
 <!--				<element name="Loop"/> -->
 				<element name="ControlFlow"/>
 				<element name="CommentBlock"/>
-<!--				<element name="Subprogram"/> -->
+				<element name="Subprogram"/>
 				<element name="Function"/>
 			</group>
 			<group name="Действия">
