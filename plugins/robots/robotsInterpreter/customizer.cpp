@@ -19,7 +19,7 @@ QIcon Customizer::applicationIcon() const
 QString Customizer::productVersion() const
 {
 	// TODO: other storage for it?
-	return "2.5.3.0";
+	return "2.5.3.2";
 }
 
 QString Customizer::aboutText() const
