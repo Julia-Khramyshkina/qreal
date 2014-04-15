@@ -17,7 +17,7 @@ QStringList SensorEnumerator::sensorNamesList()
 			<< QObject::tr("Color sensor (passive)")
 			<< QObject::tr("Sound sensor")
 			<< QObject::tr("Gyroscope")
-			<< QObject::tr("Volume sensor");
+			<< QObject::tr("Movement sensor");
 }
 
 QString SensorEnumerator::sensorName(enums::sensorType::SensorTypeEnum sensor)

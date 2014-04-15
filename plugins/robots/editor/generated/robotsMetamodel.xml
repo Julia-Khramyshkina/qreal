@@ -588,15 +588,12 @@
 					</generalizations>
 				</logic>
 			</node>
-			<node displayedName="Ждать сенсор касания" name="WaitForTouchSensor" path="12, 123 : 174, 123 :  | 174, 12 : 358, 12 : 358, 234 : 174, 234 : 174, 12 : " description="Ждать, пока не сработает сенсор касания. Параметром указывается номер порта, к которому подключен сенсор касания. Допустимые значения: 1, 2, 3, 4.">
+			<node displayedName="Ждать сенсор движения" name="WaitForTouchSensor" path="12, 123 : 174, 123 :  | 174, 12 : 358, 12 : 358, 234 : 174, 234 : 174, 12 : " description="Ждать, пока не сработает сенсор касания. Параметром указывается номер порта, к которому подключен сенсор касания. Допустимые значения: 1, 2, 3, 4.">
 				<graphics>
 					<picture sizex="50" sizey="50">
 						<image y1="0" name="images/waitForTouchSensorBlock.png" x1="0" y2="50" x2="50"/>
 					</picture>
-					<labels>
-						<label x="40" y="-25" textBinded="Port" hard="true"/>
-						<label x="0" y="-25" text="Порт:" hard="true"/>
-					</labels>
+					<labels />
 					<ports>
 						<linePort>
 							<start startx="0" starty="5"/>
@@ -620,7 +617,7 @@
 				<logic>
 					<container/>
 					<generalizations>
-						<parent parentName="SensorBlock"/>
+						<parent parentName="AbstractNode"/>
 					</generalizations>
 				</logic>
 			</node>
@@ -2344,7 +2341,7 @@
 			</group>
 			<group name="Ожидания">
 				<element name="Timer"/>
-<!--				<element name="WaitForTouchSensor"/> -->
+				<element name="WaitForTouchSensor"/>
 				<element name="WaitForSonarDistance"/>
 <!--				<element name="WaitForColor"/> -->
 				<element name="WaitForEncoder"/>

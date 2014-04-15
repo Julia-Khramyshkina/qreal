@@ -739,8 +739,9 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="sensorConstants.cpp" line="20"/>
-        <source>Volume sensor</source>
-        <translation>Сенсор объема</translation>
+        <source>Movement sensor</source>
+        <oldsource>Volume sensor</oldsource>
+        <translation>Сенсор движения</translation>
     </message>
 </context>
 <context>
