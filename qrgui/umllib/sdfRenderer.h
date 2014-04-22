@@ -11,6 +11,7 @@
 #include <QtCore/QFileInfo>
 #include <QtCore/QHash>
 #include <QtCore/QMap>
+#include <QtCore/QSharedPointer>
 #include <QtGui/QIconEngine>
 #include <QtSvg/QSvgRenderer>
 
@@ -42,9 +43,13 @@ public:
 
 private:
 
+	/// Cache for images that contains them pre-loaded and parsed and is able to quickly draw it on a painter.
+	/// Pixmaps and svg images are contained separately as they are rendered differently.
 	class ImagesCache {
 	public:
-
+		/// Draws image with given file name on given painter in given rectangle. Note that actual file, from which
+		/// an image will be loaded may be different from fileName, as described in selectBestImageFile.
+		/// @see selectBestImageFile
 		void drawImage(QString const &fileName, QPainter &painter, QRect const &rect);
 
 	private:
@@ -60,9 +65,11 @@ private:
 		/// Loads pixmap from given file, returns empty QByteArray if file does not exist.
 		static QByteArray loadPixmap(QFileInfo const &fileInfo);
 
-		QMap<QString, QPixmap> mFileNamePixmapMap;
+		/// Maps file name to pre-loaded pixmap with image.
+		QHash<QString, QPixmap> mFileNamePixmapMap;
 
-		QMap<QString, QSvgRenderer *> mFileNameSvgRendererMap;
+		/// Maps file name to a svg renderer object.
+		QHash<QString, QSharedPointer<QSvgRenderer>> mFileNameSvgRendererMap;
 	};
 
 	QString mWorkingDirName;

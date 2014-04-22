@@ -775,9 +775,9 @@ void SdfRenderer::ImagesCache::drawImage(
 
 		QFileInfo const actualFile = selectBestImageFile(actualFileName);
 
-		QByteArray rawImage = loadPixmap(actualFile);
+		QByteArray const rawImage = loadPixmap(actualFile);
 		if (actualFile.suffix() == "svg") {
-			QSvgRenderer *renderer = new QSvgRenderer(rawImage);
+			QSharedPointer<QSvgRenderer> renderer(new QSvgRenderer(rawImage));
 			mFileNameSvgRendererMap.insert(fileName, renderer);
 			renderer->render(&painter, rect);
 		} else {
@@ -791,7 +791,8 @@ void SdfRenderer::ImagesCache::drawImage(
 
 QFileInfo SdfRenderer::ImagesCache::selectBestImageFile(QString const &filePath)
 {
-	QFileInfo svgVersion(QString(filePath).replace(filePath.size() - 3, 3, "svg"));
+	QFileInfo const originalFileInfo(filePath);
+	QFileInfo const svgVersion(originalFileInfo.path() + originalFileInfo.completeBaseName() + "svg");
 
 	if (svgVersion.exists()) {
 		return svgVersion;
