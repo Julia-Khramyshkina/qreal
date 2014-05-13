@@ -82,7 +82,8 @@ Block *BlocksFactory::block(Id const &element)
 		newBlock = new WaitForTouchSensorBlock(mRobotModel);
 	} else if (elementMetatypeIs(element, "WaitForSonarDistance")) {
 		newBlock = new WaitForSonarDistanceBlock(mRobotModel);
-	} else if (elementMetatypeIs(element, "EnginesForward")) {
+	} else if (elementMetatypeIs(element, "EnginesForward") || elementMetatypeIs(element, "AngularServo")) {
+		// AngularServo and EnginesForward are synonims since angular and radial servos are controlled the same way.
 		newBlock = new EnginesForwardBlock(mRobotModel->motorA(), mRobotModel->motorB(), mRobotModel->motorC());
 	} else if (elementMetatypeIs(element, "EnginesBackward")) {
 		newBlock = new EnginesBackwardBlock(mRobotModel->motorA(), mRobotModel->motorB(), mRobotModel->motorC());

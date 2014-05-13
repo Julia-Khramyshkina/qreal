@@ -187,7 +187,7 @@ AbstractSimpleGenerator *GeneratorFactoryBase::simpleGenerator(qReal::Id const &
 		return new CommentElementGenerator(mRepo, customizer, id, this);
 	} else if (elementType == "Function") {
 		return new FunctionElementGenerator(mRepo, customizer, id, this);
-	} else if (elementType == "EnginesForward" || elementType == "EnginesBackward") {
+	} else if (elementType == "EnginesForward" || elementType == "EnginesBackward" || elementType == "AngularServo") {
 		return new EnginesGenerator(mRepo, customizer, id, elementType, this);
 	} else if (elementType == "EnginesStop") {
 		return new EnginesStopGenerator(mRepo, customizer, id, this);

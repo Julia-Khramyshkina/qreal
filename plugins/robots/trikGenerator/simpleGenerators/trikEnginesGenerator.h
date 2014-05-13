@@ -7,7 +7,7 @@ namespace robots {
 namespace generators {
 namespace simple {
 
-/// Generator for 'EnginesForward' and 'EnginesBackward' block
+/// Generator for 'EnginesForward', 'EnginesBackward' and 'AngularServo' block
 class TrikEnginesGenerator : public BindingGenerator
 {
 public:

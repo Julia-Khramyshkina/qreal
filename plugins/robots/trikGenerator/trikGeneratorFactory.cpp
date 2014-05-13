@@ -37,7 +37,7 @@ AbstractSimpleGenerator *TrikGeneratorFactory::simpleGenerator(qReal::Id const &
 		, GeneratorCustomizer &customizer)
 {
 	QString const elementType = id.element();
-	if (elementType == "EnginesForward" || elementType == "EnginesBackward") {
+	if (elementType == "EnginesForward" || elementType == "EnginesBackward" || elementType == "AngularServo") {
 		return new TrikEnginesGenerator(mRepo, customizer, id, elementType, this);
 	} else if (elementType == "EnginesStop") {
 		return new TrikEnginesStopGenerator(mRepo, customizer, id, this);

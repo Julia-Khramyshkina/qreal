@@ -11,7 +11,8 @@ EnginesGenerator::EnginesGenerator(qrRepo::RepoApi const &repo
 	: BindingGenerator(repo, customizer, id
 			, engineType == "EnginesBackward"
 					? "engines/enginesBackward.t"
-					: "engines/enginesForward.t"
+					: "engines/enginesForward.t"  // AngularServo is just another block for EnginesForward, since
+												  // it is controlled the same way as radial servo or power motor.
 			, QList<Binding *>()
 					<< Binding::createMultiTarget("@@PORT@@", "Ports", customizer.factory()->enginesConverter())
 					<< Binding::createConverting("@@POWER@@", "Power", customizer.factory()->intPropertyConverter())
