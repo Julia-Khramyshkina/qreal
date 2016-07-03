@@ -967,7 +967,8 @@ void XmlCompiler::generatePossibleEdges(utils::OutFile &out)
 
 	if (!isNotFirst)
 		out() << "\tQ_UNUSED(element);\n";
-		out() << "\treturn result;\n"
+
+	out() << "\treturn result;\n"
 		<< "}\n\n";
 }
 

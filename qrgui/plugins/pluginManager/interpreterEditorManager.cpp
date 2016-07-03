@@ -469,6 +469,10 @@ QIcon InterpreterEditorManager::icon(const Id &id) const
 	QPair<qrRepo::RepoApi*, Id> const repoAndMetaIdPair = repoAndMetaId(id);
 	const qrRepo::RepoApi * const repo = repoAndMetaIdPair.first;
 	const Id metaId = repoAndMetaIdPair.second;
+	if (!repo) {
+		return QIcon();
+	}
+
 	QDomDocument classDoc;
 	QDomElement sdfElement;
 	if (metaId.element() == "MetaEntityEdge") {
