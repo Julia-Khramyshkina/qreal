@@ -64,12 +64,22 @@ bool PatternType::init(const QDomElement &element, const QString &context)
 	return Type::init(element, context);
 }
 
-bool PatternType::initGraphics()
+bool PatternType::initRoles()
 {
 	return true;
 }
 
-bool PatternType::initAssociations()
+bool PatternType::initRoleProperties()
+{
+	return true;
+}
+
+QString PatternType::propertyName(Property *property, QString roleName)
+{
+	return "";
+}
+
+bool PatternType::initGraphics()
 {
 	return true;
 }

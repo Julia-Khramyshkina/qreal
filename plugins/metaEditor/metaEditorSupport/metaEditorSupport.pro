@@ -24,22 +24,20 @@ DESTDIR = $$DESTDIR/plugins/tools/
 links(qrkernel qrutils qrmc qrgui-preferences-dialog)
 
 HEADERS += \
-	$$PWD/metaEditorSupportPlugin.h \
-	$$PWD/editorGenerator.h \
-	$$PWD/xmlParser.h \
-	$$PWD/compilerPage.h \
+	metaEditorSupportPlugin.h \
+	editorGenerator.h \
+	xmlParser.h \
+	compilerPage.h \
 
 SOURCES += \
-	$$PWD/metaEditorSupportPlugin.cpp \
-	$$PWD/editorGenerator.cpp \
-	$$PWD/xmlParser.cpp \
-	$$PWD/compilerPage.cpp \
+	metaEditorSupportPlugin.cpp \
+	editorGenerator.cpp \
+	xmlParser.cpp \
+	compilerPage.cpp \
 
 FORMS += \
-	$$PWD/compilerPage.ui \
+	compilerPage.ui \
 
-TRANSLATIONS += \
-	$$PWD/../../../qrtranslations/ru/plugins/metaEditorSupport_ru.ts \
+TRANSLATIONS = $$PWD/../../../qrtranslations/ru/plugins/metaEditorSupport_ru.ts
 
-RESOURCES += \
-	$$PWD/metaEditorSupport.qrc
+RESOURCES = metaEditorSupport.qrc

@@ -31,10 +31,12 @@ public:
 
 	bool init(const QDomElement &element, const QString &context);
 	bool initGraphics() override;
-	bool initAssociations() override;
 	bool initDividability() override;
 	bool initPortTypes() override;
 	bool initLabel(Label *label, const QDomElement &element, const int &count) override;
+	virtual bool initRoles();
+	virtual bool initRoleProperties();
+	virtual QString propertyName(Property *property, QString roleName);
 
 	bool copyPorts(NodeType *parent) override;
 	bool copyPictures(GraphicType *parent) override;

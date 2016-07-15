@@ -44,10 +44,14 @@ private:
 	QDomElement mPortsDomElement;
 	bool mIsResizeable;
 
-	virtual bool initAssociations();
 	virtual bool initGraphics();
 	virtual bool initDividability();
 	virtual bool initPortTypes();
+
+	virtual bool initRoles();
+	virtual bool initRoleProperties();
+	virtual QString propertyName(Property *property, QString roleName);
+
 
 	bool initSdf();
 	void generateSdf() const;

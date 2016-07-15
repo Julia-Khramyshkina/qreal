@@ -18,8 +18,8 @@
 #include <QtGui/QColor>
 
 #include "graphicType.h"
+#include "roleType.h"
 
-class Association;
 namespace utils {
 	class OutFile;
 }
@@ -34,11 +34,16 @@ public:
 	virtual bool generateEnumValues(utils::OutFile &/*out*/, bool /*isNotFirst*/) { return false; }
 	bool copyPorts(NodeType* parent) override;
 	bool copyPictures(GraphicType *parent) override;
+	QList<RoleType*> getRoles();
 
 private:
-	QList<Association*> mAssociations;
-	QString mBeginType;
-	QString mEndType;
+	QList<RoleType*> mRoles;
+
+	QString mBeginArrowType;
+	QString mEndArrowType;
+	QString mBeginRoleName;
+	QString mEndRoleName;
+
 	QString mLineType;
 	QString mShapeType;
 	QColor mLineColor;
@@ -47,12 +52,19 @@ private:
 	QStringList mFromPorts;
 	QStringList mToPorts;
 
-	virtual bool initAssociations();
+
+	virtual bool initRoles();
+	virtual bool initRoleProperties();
+	virtual QString propertyName(Property *property, QString roleName);
+
 	virtual bool initGraphics();
 	virtual bool initDividability();
 	virtual bool initPortTypes();
+
 	void initPortTypes(const QDomElement &portsElement, QStringList &ports);
-	void generateEdgeStyle(const QString &styleString, utils::OutFile &out);
+	void generateEdgeStyle(const QString &styleString, const QString &roleName, utils::OutFile &out);
+
 	void generatePorts(utils::OutFile &out, const QStringList &portTypes, const QString &direction);
 	virtual bool initLabel(Label *label, const QDomElement &element, const int &count);
+	void generateEndsAndNavigables(const QString &roleName, utils::OutFile &out);
 };

@@ -95,9 +95,19 @@ bool NodeType::copyPictures(GraphicType *parent)
 	return false;
 }
 
-bool NodeType::initAssociations()
+bool NodeType::initRoles()
 {
 	return true;
+}
+
+bool NodeType::initRoleProperties()
+{
+	return true;
+}
+
+QString NodeType::propertyName(Property *property, QString roleName)
+{
+	return "";
 }
 
 bool NodeType::initDividability()

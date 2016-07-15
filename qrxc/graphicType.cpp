@@ -140,7 +140,7 @@ bool GraphicType::init(const QDomElement &element, const QString &context)
 		}
 
 		mGraphics = element.firstChildElement("graphics");
-		return initParents() && initProperties() && initDividability() && initContainers() && initAssociations()
+		return initParents() && initProperties() && initDividability() && initContainers()
 				&& initGraphics() && initLabels() && initPossibleEdges() && initPortTypes()
 				&& initCreateChildrenFromMenu() && initContainerProperties()
 				&& initExplosions();
@@ -183,10 +183,13 @@ bool GraphicType::initParents()
 
 bool GraphicType::initProperties()
 {
+	bool check = initRoleProperties();
+
 	const QDomElement propertiesElement = mLogic.firstChildElement("properties");
 	if (propertiesElement.isNull()) {
 		return true;
 	}
+
 	for (QDomElement propertyElement = propertiesElement.firstChildElement("property")
 			; !propertyElement.isNull()
 			; propertyElement = propertyElement.nextSiblingElement("property"))
@@ -196,7 +199,8 @@ bool GraphicType::initProperties()
 			delete property;
 			continue;
 		}
-		if (!addProperty(property)) {
+
+		if (!addProperty(property, "")) {
 			return false;
 		}
 	}
@@ -384,9 +388,12 @@ bool GraphicType::initLabels()
 	return true;
 }
 
-bool GraphicType::addProperty(Property *property)
+bool GraphicType::addProperty(Property *property, QString roleName)
 {
-	const QString propertyName = property->name();
+	QString propertyName = this->propertyName(property, roleName);
+	if (propertyName.isEmpty()) {
+		propertyName = property->name();
+	}
 	if (mProperties.contains(propertyName)) {
 		// This will automaticly dispose property in this branch.
 		QScopedPointer<Property> propertyDisposer(property);
@@ -421,14 +428,14 @@ bool GraphicType::resolve()
 	/// @todo Ensure that parents are not duplicated.
 
 	for (const GeneralizationProperties &generalization : mParents) {
-		// Parents are searched in "native" context of a type, so if it was imported links must not be broken.
+		// Предки ищутся в "родном" контексте типа, так что если он был импортирован, ссылки не должны поломаться.
 		const QString qualifiedParentName = generalization.name.contains("::")
 				? generalization.name
 				: nativeContext() + "::" + generalization.name;
 
 		Type *parent = mDiagram->findType(qualifiedParentName);
 		if (parent == nullptr) {
-			// Parent was not found in local context, trying to search in global context
+			// В локальном контексте не нашлось, попробуем в глобальном
 			parent = mDiagram->findType(generalization.name);
 			if (parent == nullptr) {
 				qDebug() << "ERROR: can't find parent" << generalization.name << "for" << qualifiedName();
@@ -448,12 +455,12 @@ bool GraphicType::resolve()
 		}
 
 		for (Property *property : parent->properties().values()) {
-			if (!addProperty(property->clone())) {
+			if (!addProperty(property->clone(), "")) {
 				return false;
 			}
 		}
 
-		GraphicType * const graphicParent = dynamic_cast<GraphicType*>(parent);
+		GraphicType* const graphicParent = dynamic_cast<GraphicType*>(parent);
 		if (graphicParent != nullptr) {
 			if (!generalization.overrideLabels) {
 				copyLabels(graphicParent);
@@ -472,6 +479,12 @@ bool GraphicType::resolve()
 
 			for (PossibleEdge pEdge : graphicParent->mPossibleEdges) {
 				mPossibleEdges.append(qMakePair(pEdge.first,qMakePair(pEdge.second.first,name())));
+			}
+
+			for (const QString &element : graphicParent->mExplosions.keys()) {
+				if (!mExplosions.contains(element)) {
+					mExplosions[element] = graphicParent->mExplosions[element];
+				}
 			}
 		}
 	}
