@@ -26,6 +26,7 @@
 namespace metaEditor {
 
 /// Generates metamodel in .xml format to be compiled into C++ sources by qrxc tool
+/// @todo Unify it with QrsMetamodelSerializer!
 class EditorGenerator
 {
 public:
@@ -43,13 +44,11 @@ private:
 	void createEnum(QDomElement &parent, qReal::Id const &id);
 	void createPort(QDomElement &parent, qReal::Id const &id);
 	void createGroup(QDomElement &parent, const qReal::Id &id);
-	void createRole(QDomElement &parent, const qReal::Id &id);
 	void setProperties(QDomElement &parent, qReal::Id const &id);
 	void setPorts(QDomElement &parent, qReal::Id const &id, QString const &direction);
-	void setContextMenuFields(QDomElement &parent, qReal::Id const &id);
 	void setValues(QDomElement &parent, qReal::Id const &id);
 	void setGroupNodes(QDomElement &parent, const qReal::Id &id);
-	void setRoles(QDomElement &parent, const qReal::Id &id);
+	void setAssociations(QDomElement &parent, qReal::Id const &id);
 	void setUsages(QDomElement &parent, qReal::Id const &id);
 	void setConnections(QDomElement &parent, qReal::Id const &id);
 	void setGeneralization(QDomElement &parent, qReal::Id const &id);
@@ -57,7 +56,6 @@ private:
 	void setStatusElement(QDomElement &parent, qReal::Id const &id, QString const &tagName
 			, QString const &propertyName);
 
-	void setAction(QDomElement &parent, qReal::Id const &id);
 	void setCreateChildrenFromMenu(QDomElement &parent, qReal::Id const &id);
 	void createDiagrams(QDomElement &parent, qReal::Id const &id);
 	void setContainer(QDomElement &parent, qReal::Id const &id);

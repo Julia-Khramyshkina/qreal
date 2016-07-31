@@ -119,11 +119,11 @@ void GraphicType::generateCommonData(OutFile &out) const
 	generateDescription(out);
 	generateLabels(out);
 }
-
+// TOD0
 void GraphicType::generateLabels(OutFile &out) const
 {
 	for (const Label *label : mLabels) {
-		label->generateCodeForConstructor(out);
+		label->generateCodeForConstructor(out, "first");
 	}
 }
 

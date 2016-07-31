@@ -35,8 +35,9 @@ public:
 	/// @param width Width of parent node or edge.
 	/// @param height Height of parent node or edge.
 	bool init(const QDomElement &element, int index, bool nodeLabel, int width, int height);
+	QString roleName() const;
 
-	void generateCodeForConstructor(utils::OutFile &out) const;
+	void generateCodeForConstructor(utils::OutFile &out, QString roleName) const;
 
 	Label *clone();
 	void changeIndex(int i);
@@ -48,6 +49,8 @@ private:
 	utils::ScalableCoordinate mY;
 
 	int mIndex;
+	QString mRoleName;
+	QString mNameOfPropertyRole;
 	QString mText;
 	QString mTextBinded;
 	QString mReadOnly;

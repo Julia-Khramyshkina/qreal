@@ -28,6 +28,13 @@ bool Label::init(const QDomElement &element, int index, bool nodeLabel, int widt
 	mCenter = element.attribute("center", "false");
 	mText = element.attribute("text");
 	mTextBinded = element.attribute("textBinded");
+
+	if (mTextBinded.contains(':')) {
+		int cutPosition = mTextBinded.indexOf(':', 0);
+		mRoleName = mTextBinded.mid(0, cutPosition);
+		mNameOfPropertyRole = mTextBinded.mid(cutPosition + 1);
+	}
+
 	mPrefix = element.attribute("prefix");
 	mSuffix = element.attribute("suffix");
 	mReadOnly = element.attribute("readOnly", "false");
@@ -77,16 +84,29 @@ void Label::changeIndex(int i)
 	mIndex = i;
 }
 
-void Label::generateCodeForConstructor(OutFile &out) const
+void Label::generateCodeForConstructor(OutFile &out,QString roleName) const
 {
 	if (mText.isEmpty()) {
 		// It is binded label, text for it will be fetched from repo.
-		out() << QString("\t\t\tqReal::LabelProperties %1(%2, %3, %4, \"%5\", %6, %7);\n").arg(labelName()
-						, QString::number(mIndex)
-						, QString::number(mX.value())
-						, QString::number(mY.value())
-						, mTextBinded, mReadOnly
-						, QString::number(mRotation));
+
+		if (mRoleName.isEmpty()) {
+
+
+			out() << QString("\t\t\tqReal::LabelProperties %1(%2, %3, %4, \"%5\", %6, %7);\n").arg(labelName()
+							, QString::number(mIndex)
+							, QString::number(mX.value())
+							, QString::number(mY.value())
+							, mTextBinded, mReadOnly
+							, QString::number(mRotation));
+		} else {
+			out() << QString("\t\t\tqReal::LabelProperties %1(%2, %3, %4, \"%5\", %6, %7);\n").arg(labelName()
+							, QString::number(mIndex)
+							, QString::number(mX.value())
+							, QString::number(mY.value())
+							, mRoleName, roleName
+							, mNameOfPropertyRole, mReadOnly
+							, QString::number(mRotation));
+		}
 	} else {
 		// It is a static label, text for it is fixed.
 		out() << QString("\t\t\tqReal::LabelProperties %1(%2, %3, %4, QObject::tr(\"%5\"), %6);\n").arg(labelName()
@@ -116,3 +136,66 @@ void Label::generateCodeForConstructor(OutFile &out) const
 
 	out() << QString("\t\t\taddLabel(%1);\n").arg(labelName());
 }
+
+
+
+
+/*
+
+
+void Label::generateCodeForUpdateData(OutFile &out, QString roleName)
+{
+	if (mTextBinded.isEmpty()) {
+		// Static label
+		out() << "\t\t\tQ_UNUSED(repo);\n";
+		return;
+	}
+
+	QStringList list;
+
+	if (!roleName.isEmpty() && !mNameOfPropertyRole.isEmpty()) {
+		list = getListOfStr(roleName  + "!" + mNameOfPropertyRole);
+	} else {
+		list = getListOfStr(mTextBinded);
+	}
+
+	QString resultStr;
+	if (list.count() == 1) {
+		if (list.first() == "name") {
+			resultStr = "repo->name()";
+		} else {
+			resultStr = "repo->logicalProperty(\"" + list.first() + "\")";
+		}
+	} else {
+		int counter = 1;
+		foreach (const QString &listElement, list) {
+			QString field;
+			if (counter % 2 == 0) {
+				if (listElement == "name") {
+					field = "repo->name()";
+				} else {
+					field = "repo->logicalProperty(\"" + listElement + "\")";
+				}
+			} else {
+				field = "QObject::tr(\"" + listElement + "\")";
+			}
+
+			resultStr += " + " +  field;
+			counter++;
+		}
+		resultStr = resultStr.mid(3);
+	}
+	if (mIsPlainText) {
+		out() << QString("\t\t\t%1->setPlainText(%2);\n")
+				.arg(titleName(), resultStr);
+	} else {
+		out() << "\t\t\t" + titleName() + "->setTextFromRepo("
+			 + resultStr + ");\n";
+	}
+}
+
+void Label::generateCodeForFields(OutFile &out)
+{
+	out() << "		qReal::LabelInterface *" + titleName() + ";\n";
+}
+*/

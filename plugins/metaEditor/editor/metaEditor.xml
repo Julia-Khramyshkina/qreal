@@ -143,8 +143,8 @@
 					<container>
 						<contains type="MetaEditor::MetaEntityNode"/>
 						<contains type="MetaEditor::MetaEntityEdge"/>
-						<contains type="MetaEditor::MetaEntityRole"/>
 						<contains type="MetaEditor::MetaEntityPort"/>
+						<contains type="MetaEditor::MetaEntityRole"/>
 						<contains type="MetaEditor::MetaEntityEnum"/>
 						<contains type="MetaEditor::MetaEntityGroup"/>
 						<contains type="MetaEditor::MetaEntityImport"/>
@@ -192,9 +192,6 @@
 						<property type="string" name="shape"/>
 						<property type="string" name="description"/>
 						<property type="string" name="abstract"/>
-						<property type="bool" name="isAction">
-							<default>false</default>
-						</property>
 						<property type="string" name="path"/>
 						<property type="bool" name="isResizeable">
 							<default>true</default>
@@ -272,9 +269,9 @@
 					<generalizations/>
 					<properties>
 						<property type="string" name="displayedName"/>
+						<property type="string" name="description"/>
 						<property type="MetaEntityRole" name="beginRole"/>
 						<property type="MetaEntityRole" name="endRole"/>
-						<property type="string" name="description"/>
 						<property type="string" name="path"/>
 						<property type="bool" name="isDividable">
 							<default>false</default>
@@ -315,7 +312,7 @@
 					</container>
 				</logic>
 			</node>
-			<node name="MetaEntityRole" displayedName="Role" description="Вспомогательный элемент для MetaEntityEdge. Вкладывается в MetaEntityEdge">
+<node name="MetaEntityRole" displayedName="Role" description="Вспомогательный элемент для MetaEntityEdge. Вкладывается в MetaEntityEdge">
 				<graphics>
 					<picture sizey="147" sizex="129">
 						<line y2="30a" x1="14a" x2="115a" stroke-style="solid" stroke="#ff000000" fill="#ffffffff" stroke-width="0" fill-style="none" y1="30a"/>
@@ -623,7 +620,7 @@
 					</properties>
 				</logic>
 			</edge>
-			<node name="MetaEntityPossibleEdge" displayedName="Possible Edge" description="Сущность для указания элементов, которые можно присоединять к данному с помощью «вытягивания» из него связей. Вкладывается в соответствующий элемент Node">
+			<node name="MetaEntityPossibleEdge" displayedName="Possible Edge (Deprecated)" description="Сущность для указания элементов, которые можно присоединять к данному с помощью «вытягивания» из него связей. Вкладывается в соответствующий элемент Node">
 				<graphics>
 					<picture sizex="25" sizey="25">
 						<ellipse fill="#ffffff" stroke-style="solid" stroke="#2f4f4f" y1="0" x1="0" y2="25" stroke-width="1" x2="25" fill-style="solid"/>
@@ -686,24 +683,6 @@
 				<properties/>
 				</logic>
 			</node>
-			<node name="Listener" displayedName="Listener" description="Не поддерживается">
-				<graphics>
-					<picture sizex="250" sizey="80">
-						<rectangle fill="#ffffff" stroke-style="solid" stroke="#000000" y1="0" x1="0" y2="80" stroke-width="1" x2="250" fill-style="solid"/>
-					</picture>
-					<labels>
-						<label x="5" y="3" textBinded="class" center="true"/>
-						<label x="5" y="50" textBinded="file" center="true"/>
-					</labels>
-					<ports/>
-				</graphics>
-				<logic>
-					<properties>
-						<property type="string" name="class"/>
-						<property type="string" name="file"/>
-					</properties>
-				</logic>
-			</node>
 		</graphicTypes>
 				<palette>
 			<group name="DSL Elements" description="Элементы метаязыка для описания узлов и связей создаваемого языка">
@@ -712,7 +691,6 @@
 				<element name="MetaEntityPort"/>
 				<element name="MetaEntityEnum"/>
 				<element name="MetaEntityImport"/>
-				<element name="MetaEntityRole"/>
 			</group>
 			<group name="Root Diagrams" description="Корневые элементы">
 				<element name="MetamodelDiagram"/>
@@ -722,13 +700,14 @@
 			<group name="Node Properties" description="Элементы метаязыка для указания свойств узлов создаваемого языка">
 				<element name="MetaEntity Attribute"/>
 				<element name="MetaEntityPropertiesAsContainer"/>
-				<element name="MetaEntityPossibleEdge"/>
+				<!-- <element name="MetaEntityPossibleEdge"/> -->
 			</group>
 			<group name="Enum Properties" description="Элементы метаязыка для указания свойств перечисляемого типа создаваемого языка">
 				<element name="MetaEntityValue"/>
 			</group>
 			<group name="Edge Properties" description="Элементы метаязыка для указания свойств связей создаваемого языка">
 				<element name="MetaEntity Attribute"/>
+				<element name="MetaEntityAssociation"/>
 			</group>
 			<group name="Relationship" description="Связи метаязыка для описания вызимоотношений между элементами создаваемого языка">
 				<element name="Inheritance"/>
